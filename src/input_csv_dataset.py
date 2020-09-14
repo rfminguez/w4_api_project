@@ -29,5 +29,9 @@ class Restaurants():
         return result if len(result) > 0 else "Estrellas debe ser un entero entre 1 y 3."
 
     def get_by_price(self, price):
-        result = self.df_restaurants[self.df_restaurants["city"] == price]
+        result = self.df_restaurants[self.df_restaurants["price"] == price]
         return result if len(result) > 0 else "Precio debe ser un entero entre 1 y 5."
+
+    def get_list_of_cities(self):
+        # no funciona :(
+        return self.df_restaurants["city"].unique()
