@@ -3,6 +3,11 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 
+# TO-DO: 
+# Ahora tiene previsión para una hora. 
+# Si tengo tiempo haré también previsión para los siguientes días (la información está en el JSON, solo hay que extraerla y formatearla). 
+
+
 class Restaurant():
     def __init__(self, name, city, region, latitude, longitude, cuisine, price, stars):
         self.name = name
@@ -14,6 +19,8 @@ class Restaurant():
         self.price = price
         self.stars = stars
 
+        self.price_dict = {"$": "caro", "$$": "muy caro", "$$$": "carísimo", "$$$$": "carisísimo", "$$$$$": "carisisisísimo"}
+
         self.key = self.get_api_key()
         self.url = self.get_api_url()
         self.weather_report = self.get_api_json()
@@ -23,14 +30,13 @@ class Restaurant():
         return f"""
 El restaurante {self.name}, de {self.stars} estrella{"s" if self.stars > 1 else ""}, está en la ciudad de {self.city} ({self.region}). Sirve comida de tipo {self.cuisine}.
 
-El precio es de {self.price}.
+{"El precio es " + self.price_dict[self.price] if self.price in self.price_dict.keys() else "No hay información de precio"}.
 
 La previsión meteorológica para la próxima hora es:
 - Temperatura: {self.weather_now['temp']}.
 - Sensación térmica: {self.weather_now['feels_like']}.
 - Tiempo: {self.weather_now['main']}.
-- Previsión de lluvia: {self.weather_now['rain_1h']}.
-
+- Previsión de lluvia: {self.weather_now['rain_1h']}
         """
 
     def get_api_key(self):
@@ -39,10 +45,10 @@ La previsión meteorológica para la próxima hora es:
 
     def get_api_url(self, units="metric"):
         '''
-        receives: an optional argument with the units of temperature.
+        receives:   an optional argument with the units of temperature. You can choose between:
                     - "metric": Celsius.
                     - "imperial": Fahrenheit.
-                    - by default it is Kelvin 
+                    - empty: the default unit, Kelvin.
         return: the formated api url.
         '''
         return f'http://api.openweathermap.org/data/2.5/onecall?lat={self.latitude}&lon={self.longitude}&units={units}&APPID={self.key}'
