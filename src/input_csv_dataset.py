@@ -43,12 +43,13 @@ class Restaurants():
             list_of_restaurants.append(restaurant)
 
         # el resultado es un dataframe con cero, uno o varios restaurantes
-        for r in list_of_restaurants:
-            print(r)
+        #for r in list_of_restaurants:
+        #    print(r)
         
         if len(list_of_restaurants) == 0:
-            print("No hay restaurantes con ese nombre")
+            return "No hay restaurantes con ese nombre"
         # return result if len(result) > 0 else "No hay restaurantes con ese nombre."
+        return list_of_restaurants
 
     def get_by_region(self, region):
         result = self.df_restaurants[self.df_restaurants["region"] == region][['name', 'city', 'cuisine', 'price', 'stars']]
