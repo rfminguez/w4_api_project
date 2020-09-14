@@ -4,3 +4,4 @@ input/
 .ipynb_checkpoints/
 .vscode
 __pycache__
+*.json
