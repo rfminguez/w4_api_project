@@ -46,6 +46,18 @@ def setup_arguments(parser):
                         action = "store_true"
                         )
 
+    group.add_argument("--top_cities", 
+                        dest="top_cities",
+                        help = "Listado de las ciudades con más restaurantes.",
+                        action = "store_true"
+                        )
+
+    group.add_argument("--top_regions", 
+                        dest="top_regions",
+                        help = "Listado de las regiones con más restaurantes.",
+                        action = "store_true"
+                        )
+
 
     return parser
 
@@ -69,6 +81,8 @@ def main():
     precio = args.price
     consulta_ciudades = args.list_cities 
     consulta_regiones = args.list_regions
+    top_ciudades = args.top_cities
+    top_regiones = args.top_regions
 
     # Creo un objeto para trabajar con todos los .CSV
     restaurants = i_csv.Restaurants(
@@ -77,7 +91,7 @@ def main():
         'input/three-stars-michelin-restaurants.csv'
     )
 
-    # La lógica del programa
+    # La lógica del programa:
     if nombre:
         # En este método es donde uso la API para regocer los datos meteorológicos.
         print(restaurants.get_by_name(nombre))
@@ -99,6 +113,13 @@ def main():
 
     if consulta_regiones:
         print(restaurants.get_list_of_regions())
+
+    if top_ciudades:
+        print(restaurants.get_top_cities())
+
+    if top_regiones:
+        print(restaurants.get_top_regions())
+
 
 
 if __name__ == "__main__":

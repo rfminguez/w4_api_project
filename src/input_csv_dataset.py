@@ -1,5 +1,5 @@
 import pandas as pd
-from .restaurant import Restaurant
+from src.restaurant import Restaurant
 
 class Restaurants():
     def __init__(self, csv_one_star, csv_two_stars, csv_three_stars):
@@ -72,3 +72,11 @@ class Restaurants():
 
     def get_list_of_regions(self):
         return self.df_restaurants["region"].unique()
+
+    def get_top_cities(self):
+        result = self.df_restaurants.groupby("city")["name"].count().sort_values(ascending=False).head()
+        return result
+
+    def get_top_regions(self):
+        result = self.df_restaurants.groupby("region")["name"].count().sort_values(ascending=False).head()
+        return result
