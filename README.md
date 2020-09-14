@@ -23,17 +23,17 @@ Es un conjunto de tres CSV con restaurantes de la guía michelin de los años 20
 
 ## Estructura del dataset
 Las columnas del dataset son:
-- name:         nombre del restaurante.
-- year:         año en que aparece en la guía.
-- latitude:     coordenadas de latitud (gracias a esta columna podemos cruzar datos con la API).
-- longitude:    coordenadas de longitud (ídem).
-- city:         ciudad.
-- region:       región.
-- zipCode:      código postal (no lo usamos).
-- cuisine:      tipo de cocina
-- price:        categorización del precio en símbolos de dolar (de más barato $ a más caro $$$$$).
-- url:          web del restaurante (no lo usamos).
-- stars:        estrellas michelín.
+- <b>name</b>:         nombre del restaurante.
+- <b>year</b>:         año en que aparece en la guía.
+- <b>latitude</b>:     coordenadas de latitud (gracias a esta columna podemos cruzar datos con la API).
+- <b>longitude</b>:    coordenadas de longitud (ídem).
+- <b>city</b>:         ciudad.
+- <b>region</b>:       región.
+- <b>zipCode</b>:      código postal (no lo usamos).
+- <b>cuisine</b>:      tipo de cocina
+- <b>price</b>:        categorización del precio en símbolos de dolar (de más barato $ a más caro $$$$$).
+- <b>url</b>:          web del restaurante (no lo usamos).
+- <b>stars</b>:        estrellas michelín.
 
 Una vez unidos los tres CSV el dataset resultanto tiene 695 entradas.
 
@@ -65,28 +65,28 @@ Por lo demás he dejado un par de ejemplos de respuestas en el notebook de anál
 
 
 # Contenido del proyecto
-- 00-instrucciones.ipynb: jupyter notebook con el enunciado del ejercicio.
-- 01-analisis_de_los_datos.ipynb: análisis preliminar de los datos del dataset y de la API.
-- main.py: el programa principal (he separado el código en varios ficheros).
-- src/input_csv_dataset.py: código destinado a trabajar con el set de datos descargado de Kaggle.
-- src/restaurant.py: código encargado de interactuar con la API de openweathermap.
-- output/restaurant_report.pdf: un ejemplo de datos exportados a PDF.
+- <b>"00\-instrucciones.ipynb"</b>:         jupyter notebook con el enunciado del ejercicio.
+- <b>"01\-analisis_de_los_datos.ipynb"</b>: análisis preliminar de los datos del dataset y de la API.
+- <b>"main.py"</b>:                         el programa principal (he separado el código en varios ficheros).
+- <b>"src/input_csv_dataset.py"</b>:        código destinado a trabajar con el set de datos descargado de Kaggle.
+- <b>"src/restaurant.py"</b>:               código encargado de interactuar con la API de openweathermap.
+- <b>"output/restaurant_report.pdf"</b>:    un ejemplo de datos exportados a PDF.
 
 # Uso del programa principal
 El programa main.py debería tener permisos de ejecución para poder usarse.
 
 Las opciones que admite son las siguientes:
-- "-n": recibe el nombre de un restaurante y muestra la información meteorológica por pantalla. 
+- <b>"-n"</b>: recibe el nombre de un restaurante y muestra la información meteorológica por pantalla. 
 Aquí es donde cruzo datos de los CSV con la API.
-- "-r": recibe una región y muestra los restaurantes que hay en dicha región.
-- "-c": ídem para una ciudad.
-- "-s": recibe como argumento el número de estrellas y devuelve los restaurantes con ese ranking.
-- "-p": recibe como argumento el precio categorizado y devuelve los restaurantes con ese precio.
-- "--list_cities": listado de todas las ciudades.
-- "--list_regions": listado de todas las regiones.
-- "--top_cities": las cinco ciudades con más restaurantes. Este valor está calculado usando un groupby.
-- "--top_regions": ídem pero para regiones.
-- "--report_to_pdf": como "-n" pero en vez de devolver la información por pantalla crea un PDF.
+- <b>"-r"</b>: recibe una región y muestra los restaurantes que hay en dicha región.
+- <b>"-c"</b>: ídem para una ciudad.
+- <b>"-s"</b>: recibe como argumento el número de estrellas y devuelve los restaurantes con ese ranking.
+- <b>"-p"</b>: recibe como argumento el precio categorizado y devuelve los restaurantes con ese precio.
+- <b>"--list_cities"</b>: listado de todas las ciudades.
+- <b>"--list_regions"</b>: listado de todas las regiones.
+- <b>"--top_cities"</b>: las cinco ciudades con más restaurantes. Este valor está calculado usando un groupby.
+- <b>"--top_regions"</b>: ídem pero para regiones.
+- <b>"--report_to_pdf"</b>: como "-n" pero en vez de devolver la información por pantalla crea un PDF.
 
 Estas opciones son mutuamente exclusivas, así que solo podemos usar una a la vez.
 
